@@ -9,7 +9,7 @@ export default class Login extends React.Component{
     return (
       <View style={{marginTop: 30}}>
         <TouchableOpacity onPress={() => this.props.navigation.navigate('App')}>
-          <Text>Log in</Text>
+          <Text>LOG IN</Text>
         </TouchableOpacity>
       </View>
     )

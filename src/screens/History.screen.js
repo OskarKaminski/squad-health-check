@@ -14,8 +14,43 @@ export default class History extends React.Component {
       {
         id: 'delivery',
         label: 'Delivery',
-        img: 'https://png.pngtree.com/element_pic/17/01/01/e9fc56cc583c491b99fffdea6b8cc578.jpg'
-      }
+        img: 'http://assets.stickpng.com/thumbs/580b585b2edbce24c47b2875.png'
+      },
+      {
+        id: 'Learning',
+        label: 'Learning',
+        img: 'http://assets.stickpng.com/thumbs/580b585b2edbce24c47b2772.png',
+      },
+      {
+        id: 'Speed',
+        label: 'Speed',
+        img: 'http://www.freeiconspng.com/uploads/running-man-icon-0.png',
+      },
+      {
+        id: 'Progress',
+        label: 'Progress',
+        img: 'http://pluspng.com/img-png/loader-png--194.png',
+      },
+      {
+        id: 'Fun',
+        label: 'Fun',
+        img: 'http://assets.stickpng.com/thumbs/5a340185f2aaf7518bd292c9.png',
+      },
+      {
+        id: 'Support',
+        label: 'Support',
+        img: 'https://img.clipartxtras.com/2d69acf45a6efc2305640c073821a808_learning-support-resource-teaching-team-ballymitty-national-school-support-clipart-png_2220-2220.png',
+      },
+      {
+        id: 'TeamWork',
+        label: 'TeamWork',
+        img: 'http://www.freeiconspng.com/uploads/team-icon-3.png',
+      },
+      {
+        id: 'Mission',
+        label: 'Mission',
+        img: 'http://www.pngall.com/wp-content/uploads/2016/05/Mission-PNG-Picture.png',
+      },
     ],
     retros: [
       {
