@@ -1,0 +1,14 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "quadealthheck-20181002145048-authRole",
+            "UnauthRoleArn": "arn:aws:iam::771291245740:role/quadealthheck-20181002145048-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::771291245740:role/quadealthheck-20181002145048-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "quadealthheck-20181002145048-deployment",
+            "UnauthRoleName": "quadealthheck-20181002145048-unauthRole",
+            "StackName": "quadealthheck-20181002145048",
+            "StackId": "arn:aws:cloudformation:us-east-1:771291245740:stack/quadealthheck-20181002145048/ca48e970-c641-11e8-aefe-503acac41e99"
+        }
+    }
+}

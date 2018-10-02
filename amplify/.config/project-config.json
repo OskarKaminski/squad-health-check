@@ -1,0 +1,20 @@
+{
+    "projectName": "SquadHealthCheck",
+    "projectPath": "/Users/oskarkaminski/Documents/projects/SquadHealthCheck",
+    "defaultEditor": "none",
+    "frontendHandler": {
+        "javascript": "/Users/oskarkaminski/.nvm/versions/node/v9.8.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-frontend-javascript"
+    },
+    "javascript": {
+        "framework": "react-native",
+        "config": {
+            "SourceDir": "src",
+            "DistributionDir": "dist",
+            "BuildCommand": "npm run-script build",
+            "StartCommand": "npm run-script start"
+        }
+    },
+    "providers": {
+        "awscloudformation": "/Users/oskarkaminski/.nvm/versions/node/v9.8.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-provider-awscloudformation"
+    }
+}
