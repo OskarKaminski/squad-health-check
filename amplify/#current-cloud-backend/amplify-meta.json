@@ -19,7 +19,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/quadealthheck-20181002145048-deployment/amplify-cfn-templates/auth/cognitob80b2b23-cloudformation-template.yml",
 				"logicalId": "authcognitob80b2b23"
 			},
-			"lastPushTimeStamp": "2018-10-02T13:11:33.686Z",
+			"lastPushTimeStamp": "2018-10-02T14:46:42.852Z",
 			"output": {
 				"AppClientSecret": "rct5c1u5n554puqnisq5vckeuo76v0jv1gt6gmfmp4anf825l3l",
 				"UserPoolId": "us-east-1_LwBsSCTcU",
@@ -31,5 +31,6 @@
 			},
 			"lastPushDirHash": "9U0Ibcfkbb8BolE6J2faTez0Rko="
 		}
-	}
+	},
+	"api": {}
 }
