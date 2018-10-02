@@ -21,4 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withAuthenticator(App)
+export default withAuthenticator(App, { includeGreetings: true })
