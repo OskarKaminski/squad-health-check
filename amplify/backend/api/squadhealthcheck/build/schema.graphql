@@ -1,0 +1,236 @@
+type User {
+  id: ID!
+  name: String!
+  team: Team!
+  retrospections(filter: ModelRetrospectionFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelRetrospectionConnection
+}
+
+type Retrospection {
+  id: ID!
+  date: String!
+  user: User
+  categories(filter: ModelHealthCategoryFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelHealthCategoryConnection
+}
+
+type HealthCategory {
+  id: String!
+  value: String
+  retrospection: Retrospection
+}
+
+type Team {
+  id: ID!
+  content: String
+  users(filter: ModelUserFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelUserConnection
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelUserConnection {
+  items: [User]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelUserFilterInput {
+  id: ModelIDFilterInput
+  name: ModelStringFilterInput
+  and: [ModelUserFilterInput]
+  or: [ModelUserFilterInput]
+  not: ModelUserFilterInput
+}
+
+type Query {
+  getUser(id: ID!): User
+  listUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String): ModelUserConnection
+  getRetrospection(id: ID!): Retrospection
+  listRetrospections(filter: ModelRetrospectionFilterInput, limit: Int, nextToken: String): ModelRetrospectionConnection
+  getHealthCategory(id: ID!): HealthCategory
+  listHealthCategorys(filter: ModelHealthCategoryFilterInput, limit: Int, nextToken: String): ModelHealthCategoryConnection
+  getTeam(id: ID!): Team
+  listTeams(filter: ModelTeamFilterInput, limit: Int, nextToken: String): ModelTeamConnection
+}
+
+input CreateUserInput {
+  name: String!
+  userTeamId: ID
+}
+
+input UpdateUserInput {
+  id: ID!
+  name: String
+  userTeamId: ID
+}
+
+input DeleteUserInput {
+  id: ID
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User
+  updateUser(input: UpdateUserInput!): User
+  deleteUser(input: DeleteUserInput!): User
+  createRetrospection(input: CreateRetrospectionInput!): Retrospection
+  updateRetrospection(input: UpdateRetrospectionInput!): Retrospection
+  deleteRetrospection(input: DeleteRetrospectionInput!): Retrospection
+  createHealthCategory(input: CreateHealthCategoryInput!): HealthCategory
+  updateHealthCategory(input: UpdateHealthCategoryInput!): HealthCategory
+  deleteHealthCategory(input: DeleteHealthCategoryInput!): HealthCategory
+  createTeam(input: CreateTeamInput!): Team
+  updateTeam(input: UpdateTeamInput!): Team
+  deleteTeam(input: DeleteTeamInput!): Team
+}
+
+type Subscription {
+  onCreateUser: User @aws_subscribe(mutations: ["createUser"])
+  onUpdateUser: User @aws_subscribe(mutations: ["updateUser"])
+  onDeleteUser: User @aws_subscribe(mutations: ["deleteUser"])
+  onCreateRetrospection: Retrospection @aws_subscribe(mutations: ["createRetrospection"])
+  onUpdateRetrospection: Retrospection @aws_subscribe(mutations: ["updateRetrospection"])
+  onDeleteRetrospection: Retrospection @aws_subscribe(mutations: ["deleteRetrospection"])
+  onCreateHealthCategory: HealthCategory @aws_subscribe(mutations: ["createHealthCategory"])
+  onUpdateHealthCategory: HealthCategory @aws_subscribe(mutations: ["updateHealthCategory"])
+  onDeleteHealthCategory: HealthCategory @aws_subscribe(mutations: ["deleteHealthCategory"])
+  onCreateTeam: Team @aws_subscribe(mutations: ["createTeam"])
+  onUpdateTeam: Team @aws_subscribe(mutations: ["updateTeam"])
+  onDeleteTeam: Team @aws_subscribe(mutations: ["deleteTeam"])
+}
+
+type ModelRetrospectionConnection {
+  items: [Retrospection]
+  nextToken: String
+}
+
+input ModelRetrospectionFilterInput {
+  id: ModelIDFilterInput
+  date: ModelStringFilterInput
+  and: [ModelRetrospectionFilterInput]
+  or: [ModelRetrospectionFilterInput]
+  not: ModelRetrospectionFilterInput
+}
+
+input CreateRetrospectionInput {
+  date: String!
+  retrospectionUserId: ID
+}
+
+input UpdateRetrospectionInput {
+  id: ID!
+  date: String
+  retrospectionUserId: ID
+}
+
+input DeleteRetrospectionInput {
+  id: ID
+}
+
+type ModelHealthCategoryConnection {
+  items: [HealthCategory]
+  nextToken: String
+}
+
+input ModelHealthCategoryFilterInput {
+  id: ModelStringFilterInput
+  value: ModelStringFilterInput
+  and: [ModelHealthCategoryFilterInput]
+  or: [ModelHealthCategoryFilterInput]
+  not: ModelHealthCategoryFilterInput
+}
+
+input CreateHealthCategoryInput {
+  value: String
+  healthCategoryRetrospectionId: ID
+}
+
+input UpdateHealthCategoryInput {
+  id: String!
+  value: String
+  healthCategoryRetrospectionId: ID
+}
+
+input DeleteHealthCategoryInput {
+  id: ID
+}
+
+type ModelTeamConnection {
+  items: [Team]
+  nextToken: String
+}
+
+input ModelTeamFilterInput {
+  id: ModelIDFilterInput
+  content: ModelStringFilterInput
+  and: [ModelTeamFilterInput]
+  or: [ModelTeamFilterInput]
+  not: ModelTeamFilterInput
+}
+
+input CreateTeamInput {
+  content: String
+}
+
+input UpdateTeamInput {
+  id: ID!
+  content: String
+}
+
+input DeleteTeamInput {
+  id: ID
+}

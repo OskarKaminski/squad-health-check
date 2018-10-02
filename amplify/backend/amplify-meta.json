@@ -1,36 +1,44 @@
 {
-    "providers": {
-        "awscloudformation": {
-            "AuthRoleName": "quadealthheck-20181002145048-authRole",
-            "UnauthRoleArn": "arn:aws:iam::771291245740:role/quadealthheck-20181002145048-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::771291245740:role/quadealthheck-20181002145048-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "quadealthheck-20181002145048-deployment",
-            "UnauthRoleName": "quadealthheck-20181002145048-unauthRole",
-            "StackName": "quadealthheck-20181002145048",
-            "StackId": "arn:aws:cloudformation:us-east-1:771291245740:stack/quadealthheck-20181002145048/ca48e970-c641-11e8-aefe-503acac41e99"
-        }
-    },
-    "auth": {
-        "cognitob80b2b23": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation",
-            "providerMetadata": {
-                "s3TemplateURL": "https://s3.amazonaws.com/quadealthheck-20181002145048-deployment/amplify-cfn-templates/auth/cognitob80b2b23-cloudformation-template.yml",
-                "logicalId": "authcognitob80b2b23"
-            },
-            "lastPushTimeStamp": "2018-10-02T15:34:07.080Z",
-            "output": {
-                "AppClientSecret": "rct5c1u5n554puqnisq5vckeuo76v0jv1gt6gmfmp4anf825l3l",
-                "UserPoolId": "us-east-1_LwBsSCTcU",
-                "AppClientIDWeb": "b21hrr8l8abjc43t0o0e40oee",
-                "AppClientID": "23v1pclnj046rqm0kqlouigbm",
-                "IdentityPoolId": "us-east-1:8add504b-cd17-4d4a-97f0-34e7ce1c9358",
-                "IdentityPoolName": "cognitob80b2b23_identitypool_b80b2b23",
-                "UserPoolName": "cognitob80b2b23_userpool_b80b2b23"
-            },
-            "lastPushDirHash": "9U0Ibcfkbb8BolE6J2faTez0Rko="
-        }
-    },
-    "api": {}
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "quadealthheck-20181002145048-authRole",
+			"UnauthRoleArn": "arn:aws:iam::771291245740:role/quadealthheck-20181002145048-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::771291245740:role/quadealthheck-20181002145048-authRole",
+			"Region": "us-east-1",
+			"DeploymentBucketName": "quadealthheck-20181002145048-deployment",
+			"UnauthRoleName": "quadealthheck-20181002145048-unauthRole",
+			"StackName": "quadealthheck-20181002145048",
+			"StackId": "arn:aws:cloudformation:us-east-1:771291245740:stack/quadealthheck-20181002145048/ca48e970-c641-11e8-aefe-503acac41e99"
+		}
+	},
+	"auth": {
+		"cognitob80b2b23": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/quadealthheck-20181002145048-deployment/amplify-cfn-templates/auth/cognitob80b2b23-cloudformation-template.yml",
+				"logicalId": "authcognitob80b2b23"
+			},
+			"lastPushTimeStamp": "2018-10-02T15:34:07.080Z",
+			"output": {
+				"AppClientSecret": "rct5c1u5n554puqnisq5vckeuo76v0jv1gt6gmfmp4anf825l3l",
+				"UserPoolId": "us-east-1_LwBsSCTcU",
+				"AppClientIDWeb": "b21hrr8l8abjc43t0o0e40oee",
+				"AppClientID": "23v1pclnj046rqm0kqlouigbm",
+				"IdentityPoolId": "us-east-1:8add504b-cd17-4d4a-97f0-34e7ce1c9358",
+				"IdentityPoolName": "cognitob80b2b23_identitypool_b80b2b23",
+				"UserPoolName": "cognitob80b2b23_userpool_b80b2b23"
+			},
+			"lastPushDirHash": "9U0Ibcfkbb8BolE6J2faTez0Rko="
+		}
+	},
+	"api": {
+		"squadhealthcheck": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"securityType": "API_KEY"
+			}
+		}
+	}
 }
