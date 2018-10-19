@@ -1,6 +1,6 @@
 {
-    "projectName": "SquadHealthCheck",
-    "projectPath": "/Users/oskarkaminski/Documents/projects/SquadHealthCheck",
+    "projectName": "squadhealthcheck",
+    "projectPath": "/Users/oskarkaminski/Documents/projects/squad-health-check",
     "defaultEditor": "none",
     "frontendHandler": {
         "javascript": "/Users/oskarkaminski/.nvm/versions/node/v9.8.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-frontend-javascript"
