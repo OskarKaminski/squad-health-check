@@ -1,23 +1,41 @@
+type Team @model {
+  id: ID!
+  users: [User] @connection(name: "TeamUsers")
+  retrospectives: [Retrospective] @connection(name: "TeamRetrospectives")
+  categories: [Category] @connection(name: "TeamCategories")
+  #    retroStartDay: String
+  #    retroStartHour: String
+  #    retroEndDay: String
+  #    retroEndHour: String
+  #    retroInterval: Number # In days
+}
 type User @model {
   id: ID!
   name: String!
   team: Team! @connection(name: "TeamUsers")
-  retrospections: [Retrospection] @connection(name: "UserRetrospections")
+  answers: [Answer] @connection(name: "UserAnswers")
 }
-type Retrospection @model {
+type Category @model {
+  id: String!
+  order: Int
+  descriptionGreen: String!
+  descriptionRed: String!
+  team: Team @connection(name: "TeamCategories")
+}
+type Retrospective @model {
   id: ID!
   date: String!
-  test: String
-  user: User @connection(name: "UserRetrospections")
-  categories: [HealthCategory] @connection(name: "RetroHealthCategory")
+  team: Team @connection(name: "TeamRetrospectives")
+  answers: [Answer] @connection(name: "RetrospectiveAnswers")
+  finished: Boolean
 }
-type HealthCategory @model {
-  id: String!
-  value: String
-  retrospection: Retrospection @connection(name: "RetroHealthCategory")
-}
-type Team @model {
-  id: ID!
-  content: String
-  users: [User] @connection(name: "TeamUsers")
-}
+type Answer
+  @model
+  @auth(rules: [{allow: owner}])
+  {
+    id: ID!
+    user: User @connection(name: "UserAnswers")
+    retrospective: Retrospective @connection(name: "RetrospectiveAnswers")
+    category: Category
+    value: Int
+  }

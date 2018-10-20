@@ -1,20 +1,35 @@
 {
 	"providers": {
 		"awscloudformation": {
-			"AuthRoleName": "squadhealthcheck-20181004141849-authRole",
-			"UnauthRoleArn": "arn:aws:iam::771291245740:role/squadhealthcheck-20181004141849-unauthRole",
-			"AuthRoleArn": "arn:aws:iam::771291245740:role/squadhealthcheck-20181004141849-authRole",
+			"AuthRoleName": "squadhealthcheck-20181020151205-authRole",
+			"UnauthRoleArn": "arn:aws:iam::771291245740:role/squadhealthcheck-20181020151205-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::771291245740:role/squadhealthcheck-20181020151205-authRole",
 			"Region": "us-east-1",
-			"DeploymentBucketName": "squadhealthcheck-20181004141849-deployment",
-			"UnauthRoleName": "squadhealthcheck-20181004141849-unauthRole",
-			"StackName": "squadhealthcheck-20181004141849",
-			"StackId": "arn:aws:cloudformation:us-east-1:771291245740:stack/squadhealthcheck-20181004141849/a73164f0-c7cf-11e8-b4d0-50d5cad95262"
+			"DeploymentBucketName": "squadhealthcheck-20181020151205-deployment",
+			"UnauthRoleName": "squadhealthcheck-20181020151205-unauthRole",
+			"StackName": "squadhealthcheck-20181020151205",
+			"StackId": "arn:aws:cloudformation:us-east-1:771291245740:stack/squadhealthcheck-20181020151205/be65d740-d469-11e8-b1b6-500c285ebe99"
 		}
 	},
 	"auth": {
-		"cognitobb8b3631": {
+		"cognito455f02be": {
 			"service": "Cognito",
-			"providerPlugin": "awscloudformation"
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/squadhealthcheck-20181020151205-deployment/amplify-cfn-templates/auth/cognito455f02be-cloudformation-template.yml",
+				"logicalId": "authcognito455f02be"
+			},
+			"lastPushTimeStamp": "2018-10-20T13:19:35.046Z",
+			"output": {
+				"AppClientSecret": "18njnecnrm13e089ql5voimbf3j5r7tebgkajhqjor6lqi01kfhl",
+				"UserPoolId": "us-east-1_FBdn43gvU",
+				"AppClientIDWeb": "2fvir6ct7eb97eeopbs3on9r71",
+				"AppClientID": "6j9jbi5bkl62meu5emoo99u0vb",
+				"IdentityPoolId": "us-east-1:54021630-cd40-4b50-bbe8-34f43d28f9f9",
+				"IdentityPoolName": "cognito455f02be_identitypool_455f02be",
+				"UserPoolName": "cognito455f02be_userpool_455f02be"
+			},
+			"lastPushDirHash": "/0SXsywhn4th3VOTbcg1QKpgKEg="
 		}
 	}
 }
