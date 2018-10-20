@@ -140,10 +140,10 @@
 							"Outputs.UserPoolId"
 						]
 					},
-					"schemaGraphql": "s3://squadhealthcheck-20181020151205-deployment/amplify-appsync-files/schema.graphql.1540056455441",
+					"schemaGraphql": "s3://squadhealthcheck-20181020151205-deployment/amplify-appsync-files/schema.graphql.1540056942228",
 					"ResolverBucket": "squadhealthcheck-20181020151205-deployment",
 					"ResolverRootKey": "amplify-appsync-files",
-					"DeploymentTimestamp": "1540056455441"
+					"DeploymentTimestamp": "1540056942228"
 				}
 			}
 		}

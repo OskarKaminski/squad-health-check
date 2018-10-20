@@ -1,13 +1,106 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
 
+export const createGroup = `mutation CreateGroup($input: CreateGroupInput!) {
+  createGroup(input: $input) {
+    id
+    description
+    users {
+      items {
+        id
+        name
+      }
+      nextToken
+    }
+    retrospectives {
+      items {
+        id
+        date
+        finished
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        order
+        descriptionGreen
+        descriptionRed
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const updateGroup = `mutation UpdateGroup($input: UpdateGroupInput!) {
+  updateGroup(input: $input) {
+    id
+    description
+    users {
+      items {
+        id
+        name
+      }
+      nextToken
+    }
+    retrospectives {
+      items {
+        id
+        date
+        finished
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        order
+        descriptionGreen
+        descriptionRed
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const deleteGroup = `mutation DeleteGroup($input: DeleteGroupInput!) {
+  deleteGroup(input: $input) {
+    id
+    description
+    users {
+      items {
+        id
+        name
+      }
+      nextToken
+    }
+    retrospectives {
+      items {
+        id
+        date
+        finished
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        order
+        descriptionGreen
+        descriptionRed
+      }
+      nextToken
+    }
+  }
+}
+`;
 export const createUser = `mutation CreateUser($input: CreateUserInput!) {
   createUser(input: $input) {
     id
     name
-    whatevers {
+    group {
       id
-      name
+      description
     }
     answers {
       items {
@@ -23,9 +116,9 @@ export const updateUser = `mutation UpdateUser($input: UpdateUserInput!) {
   updateUser(input: $input) {
     id
     name
-    whatevers {
+    group {
       id
-      name
+      description
     }
     answers {
       items {
@@ -41,9 +134,9 @@ export const deleteUser = `mutation DeleteUser($input: DeleteUserInput!) {
   deleteUser(input: $input) {
     id
     name
-    whatevers {
+    group {
       id
-      name
+      description
     }
     answers {
       items {
@@ -51,39 +144,6 @@ export const deleteUser = `mutation DeleteUser($input: DeleteUserInput!) {
         value
       }
       nextToken
-    }
-  }
-}
-`;
-export const createWhatever = `mutation CreateWhatever($input: CreateWhateverInput!) {
-  createWhatever(input: $input) {
-    id
-    name
-    users {
-      id
-      name
-    }
-  }
-}
-`;
-export const updateWhatever = `mutation UpdateWhatever($input: UpdateWhateverInput!) {
-  updateWhatever(input: $input) {
-    id
-    name
-    users {
-      id
-      name
-    }
-  }
-}
-`;
-export const deleteWhatever = `mutation DeleteWhatever($input: DeleteWhateverInput!) {
-  deleteWhatever(input: $input) {
-    id
-    name
-    users {
-      id
-      name
     }
   }
 }
@@ -98,6 +158,10 @@ export const createCategory = `mutation CreateCategory($input: CreateCategoryInp
       id
       value
     }
+    group {
+      id
+      description
+    }
   }
 }
 `;
@@ -110,6 +174,10 @@ export const updateCategory = `mutation UpdateCategory($input: UpdateCategoryInp
     answers {
       id
       value
+    }
+    group {
+      id
+      description
     }
   }
 }
@@ -124,6 +192,10 @@ export const deleteCategory = `mutation DeleteCategory($input: DeleteCategoryInp
       id
       value
     }
+    group {
+      id
+      description
+    }
   }
 }
 `;
@@ -131,6 +203,10 @@ export const createRetrospective = `mutation CreateRetrospective($input: CreateR
   createRetrospective(input: $input) {
     id
     date
+    group {
+      id
+      description
+    }
     answers {
       items {
         id
@@ -146,6 +222,10 @@ export const updateRetrospective = `mutation UpdateRetrospective($input: UpdateR
   updateRetrospective(input: $input) {
     id
     date
+    group {
+      id
+      description
+    }
     answers {
       items {
         id
@@ -161,6 +241,10 @@ export const deleteRetrospective = `mutation DeleteRetrospective($input: DeleteR
   deleteRetrospective(input: $input) {
     id
     date
+    group {
+      id
+      description
+    }
     answers {
       items {
         id

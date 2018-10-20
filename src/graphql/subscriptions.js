@@ -1,13 +1,106 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
 
+export const onCreateGroup = `subscription OnCreateGroup {
+  onCreateGroup {
+    id
+    description
+    users {
+      items {
+        id
+        name
+      }
+      nextToken
+    }
+    retrospectives {
+      items {
+        id
+        date
+        finished
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        order
+        descriptionGreen
+        descriptionRed
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const onUpdateGroup = `subscription OnUpdateGroup {
+  onUpdateGroup {
+    id
+    description
+    users {
+      items {
+        id
+        name
+      }
+      nextToken
+    }
+    retrospectives {
+      items {
+        id
+        date
+        finished
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        order
+        descriptionGreen
+        descriptionRed
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const onDeleteGroup = `subscription OnDeleteGroup {
+  onDeleteGroup {
+    id
+    description
+    users {
+      items {
+        id
+        name
+      }
+      nextToken
+    }
+    retrospectives {
+      items {
+        id
+        date
+        finished
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        order
+        descriptionGreen
+        descriptionRed
+      }
+      nextToken
+    }
+  }
+}
+`;
 export const onCreateUser = `subscription OnCreateUser {
   onCreateUser {
     id
     name
-    whatevers {
+    group {
       id
-      name
+      description
     }
     answers {
       items {
@@ -23,9 +116,9 @@ export const onUpdateUser = `subscription OnUpdateUser {
   onUpdateUser {
     id
     name
-    whatevers {
+    group {
       id
-      name
+      description
     }
     answers {
       items {
@@ -41,9 +134,9 @@ export const onDeleteUser = `subscription OnDeleteUser {
   onDeleteUser {
     id
     name
-    whatevers {
+    group {
       id
-      name
+      description
     }
     answers {
       items {
@@ -51,39 +144,6 @@ export const onDeleteUser = `subscription OnDeleteUser {
         value
       }
       nextToken
-    }
-  }
-}
-`;
-export const onCreateWhatever = `subscription OnCreateWhatever {
-  onCreateWhatever {
-    id
-    name
-    users {
-      id
-      name
-    }
-  }
-}
-`;
-export const onUpdateWhatever = `subscription OnUpdateWhatever {
-  onUpdateWhatever {
-    id
-    name
-    users {
-      id
-      name
-    }
-  }
-}
-`;
-export const onDeleteWhatever = `subscription OnDeleteWhatever {
-  onDeleteWhatever {
-    id
-    name
-    users {
-      id
-      name
     }
   }
 }
@@ -98,6 +158,10 @@ export const onCreateCategory = `subscription OnCreateCategory {
       id
       value
     }
+    group {
+      id
+      description
+    }
   }
 }
 `;
@@ -110,6 +174,10 @@ export const onUpdateCategory = `subscription OnUpdateCategory {
     answers {
       id
       value
+    }
+    group {
+      id
+      description
     }
   }
 }
@@ -124,6 +192,10 @@ export const onDeleteCategory = `subscription OnDeleteCategory {
       id
       value
     }
+    group {
+      id
+      description
+    }
   }
 }
 `;
@@ -131,6 +203,10 @@ export const onCreateRetrospective = `subscription OnCreateRetrospective {
   onCreateRetrospective {
     id
     date
+    group {
+      id
+      description
+    }
     answers {
       items {
         id
@@ -146,6 +222,10 @@ export const onUpdateRetrospective = `subscription OnUpdateRetrospective {
   onUpdateRetrospective {
     id
     date
+    group {
+      id
+      description
+    }
     answers {
       items {
         id
@@ -161,6 +241,10 @@ export const onDeleteRetrospective = `subscription OnDeleteRetrospective {
   onDeleteRetrospective {
     id
     date
+    group {
+      id
+      description
+    }
     answers {
       items {
         id

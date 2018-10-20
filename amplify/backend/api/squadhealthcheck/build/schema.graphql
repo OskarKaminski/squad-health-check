@@ -1,14 +1,16 @@
+type Group {
+  id: ID!
+  description: String!
+  users(filter: ModelUserFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelUserConnection
+  retrospectives(filter: ModelRetrospectiveFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelRetrospectiveConnection
+  categories(filter: ModelCategoryFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelCategoryConnection
+}
+
 type User {
   id: ID!
   name: String!
-  whatevers: Whatever
+  group: Group
   answers(filter: ModelAnswerFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAnswerConnection
-}
-
-type Whatever {
-  id: ID!
-  name: String!
-  users: User
 }
 
 type Category {
@@ -17,11 +19,13 @@ type Category {
   descriptionGreen: String!
   descriptionRed: String!
   answers: Answer
+  group: Group
 }
 
 type Retrospective {
   id: ID!
   date: String!
+  group: Group
   answers(filter: ModelAnswerFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAnswerConnection
   finished: Boolean
 }
@@ -39,8 +43,8 @@ enum ModelSortDirection {
   DESC
 }
 
-type ModelUserConnection {
-  items: [User]
+type ModelGroupConnection {
+  items: [Group]
   nextToken: String
 }
 
@@ -99,19 +103,19 @@ input ModelBooleanFilterInput {
   eq: Boolean
 }
 
-input ModelUserFilterInput {
+input ModelGroupFilterInput {
   id: ModelIDFilterInput
-  name: ModelStringFilterInput
-  and: [ModelUserFilterInput]
-  or: [ModelUserFilterInput]
-  not: ModelUserFilterInput
+  description: ModelStringFilterInput
+  and: [ModelGroupFilterInput]
+  or: [ModelGroupFilterInput]
+  not: ModelGroupFilterInput
 }
 
 type Query {
+  getGroup(id: ID!): Group
+  listGroups(filter: ModelGroupFilterInput, limit: Int, nextToken: String): ModelGroupConnection
   getUser(id: ID!): User
   listUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String): ModelUserConnection
-  getWhatever(id: ID!): Whatever
-  listWhatevers(filter: ModelWhateverFilterInput, limit: Int, nextToken: String): ModelWhateverConnection
   getCategory(id: ID!): Category
   listCategorys(filter: ModelCategoryFilterInput, limit: Int, nextToken: String): ModelCategoryConnection
   getRetrospective(id: ID!): Retrospective
@@ -120,28 +124,26 @@ type Query {
   listAnswers(filter: ModelAnswerFilterInput, limit: Int, nextToken: String): ModelAnswerConnection
 }
 
-input CreateUserInput {
-  name: String!
-  userWhateversId: ID
+input CreateGroupInput {
+  description: String!
 }
 
-input UpdateUserInput {
+input UpdateGroupInput {
   id: ID!
-  name: String
-  userWhateversId: ID
+  description: String
 }
 
-input DeleteUserInput {
+input DeleteGroupInput {
   id: ID
 }
 
 type Mutation {
+  createGroup(input: CreateGroupInput!): Group
+  updateGroup(input: UpdateGroupInput!): Group
+  deleteGroup(input: DeleteGroupInput!): Group
   createUser(input: CreateUserInput!): User
   updateUser(input: UpdateUserInput!): User
   deleteUser(input: DeleteUserInput!): User
-  createWhatever(input: CreateWhateverInput!): Whatever
-  updateWhatever(input: UpdateWhateverInput!): Whatever
-  deleteWhatever(input: DeleteWhateverInput!): Whatever
   createCategory(input: CreateCategoryInput!): Category
   updateCategory(input: UpdateCategoryInput!): Category
   deleteCategory(input: DeleteCategoryInput!): Category
@@ -154,12 +156,12 @@ type Mutation {
 }
 
 type Subscription {
+  onCreateGroup: Group @aws_subscribe(mutations: ["createGroup"])
+  onUpdateGroup: Group @aws_subscribe(mutations: ["updateGroup"])
+  onDeleteGroup: Group @aws_subscribe(mutations: ["deleteGroup"])
   onCreateUser: User @aws_subscribe(mutations: ["createUser"])
   onUpdateUser: User @aws_subscribe(mutations: ["updateUser"])
   onDeleteUser: User @aws_subscribe(mutations: ["deleteUser"])
-  onCreateWhatever: Whatever @aws_subscribe(mutations: ["createWhatever"])
-  onUpdateWhatever: Whatever @aws_subscribe(mutations: ["updateWhatever"])
-  onDeleteWhatever: Whatever @aws_subscribe(mutations: ["deleteWhatever"])
   onCreateCategory: Category @aws_subscribe(mutations: ["createCategory"])
   onUpdateCategory: Category @aws_subscribe(mutations: ["updateCategory"])
   onDeleteCategory: Category @aws_subscribe(mutations: ["deleteCategory"])
@@ -171,31 +173,31 @@ type Subscription {
   onDeleteAnswer: Answer @aws_subscribe(mutations: ["deleteAnswer"])
 }
 
-type ModelWhateverConnection {
-  items: [Whatever]
+type ModelUserConnection {
+  items: [User]
   nextToken: String
 }
 
-input ModelWhateverFilterInput {
+input ModelUserFilterInput {
   id: ModelIDFilterInput
   name: ModelStringFilterInput
-  and: [ModelWhateverFilterInput]
-  or: [ModelWhateverFilterInput]
-  not: ModelWhateverFilterInput
+  and: [ModelUserFilterInput]
+  or: [ModelUserFilterInput]
+  not: ModelUserFilterInput
 }
 
-input CreateWhateverInput {
+input CreateUserInput {
   name: String!
-  whateverUsersId: ID
+  userGroupId: ID
 }
 
-input UpdateWhateverInput {
+input UpdateUserInput {
   id: ID!
   name: String
-  whateverUsersId: ID
+  userGroupId: ID
 }
 
-input DeleteWhateverInput {
+input DeleteUserInput {
   id: ID
 }
 
@@ -219,6 +221,7 @@ input CreateCategoryInput {
   descriptionGreen: String!
   descriptionRed: String!
   categoryAnswersId: ID
+  categoryGroupId: ID
 }
 
 input UpdateCategoryInput {
@@ -227,6 +230,7 @@ input UpdateCategoryInput {
   descriptionGreen: String
   descriptionRed: String
   categoryAnswersId: ID
+  categoryGroupId: ID
 }
 
 input DeleteCategoryInput {
@@ -250,12 +254,14 @@ input ModelRetrospectiveFilterInput {
 input CreateRetrospectiveInput {
   date: String!
   finished: Boolean
+  retrospectiveGroupId: ID
 }
 
 input UpdateRetrospectiveInput {
   id: ID!
   date: String
   finished: Boolean
+  retrospectiveGroupId: ID
 }
 
 input DeleteRetrospectiveInput {

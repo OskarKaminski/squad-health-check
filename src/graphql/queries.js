@@ -1,13 +1,82 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
 
+export const getGroup = `query GetGroup($id: ID!) {
+  getGroup(id: $id) {
+    id
+    description
+    users {
+      items {
+        id
+        name
+      }
+      nextToken
+    }
+    retrospectives {
+      items {
+        id
+        date
+        finished
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        order
+        descriptionGreen
+        descriptionRed
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const listGroups = `query ListGroups(
+  $filter: ModelGroupFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listGroups(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      description
+      users {
+        items {
+          id
+          name
+        }
+        nextToken
+      }
+      retrospectives {
+        items {
+          id
+          date
+          finished
+        }
+        nextToken
+      }
+      categories {
+        items {
+          id
+          order
+          descriptionGreen
+          descriptionRed
+        }
+        nextToken
+      }
+    }
+    nextToken
+  }
+}
+`;
 export const getUser = `query GetUser($id: ID!) {
   getUser(id: $id) {
     id
     name
-    whatevers {
+    group {
       id
-      name
+      description
     }
     answers {
       items {
@@ -28,9 +97,9 @@ export const listUsers = `query ListUsers(
     items {
       id
       name
-      whatevers {
+      group {
         id
-        name
+        description
       }
       answers {
         items {
@@ -38,35 +107,6 @@ export const listUsers = `query ListUsers(
           value
         }
         nextToken
-      }
-    }
-    nextToken
-  }
-}
-`;
-export const getWhatever = `query GetWhatever($id: ID!) {
-  getWhatever(id: $id) {
-    id
-    name
-    users {
-      id
-      name
-    }
-  }
-}
-`;
-export const listWhatevers = `query ListWhatevers(
-  $filter: ModelWhateverFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listWhatevers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      name
-      users {
-        id
-        name
       }
     }
     nextToken
@@ -82,6 +122,10 @@ export const getCategory = `query GetCategory($id: ID!) {
     answers {
       id
       value
+    }
+    group {
+      id
+      description
     }
   }
 }
@@ -101,6 +145,10 @@ export const listCategorys = `query ListCategorys(
         id
         value
       }
+      group {
+        id
+        description
+      }
     }
     nextToken
   }
@@ -110,6 +158,10 @@ export const getRetrospective = `query GetRetrospective($id: ID!) {
   getRetrospective(id: $id) {
     id
     date
+    group {
+      id
+      description
+    }
     answers {
       items {
         id
@@ -130,6 +182,10 @@ export const listRetrospectives = `query ListRetrospectives(
     items {
       id
       date
+      group {
+        id
+        description
+      }
       answers {
         items {
           id
