@@ -19,7 +19,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/squadhealthcheck-20181020151205-deployment/amplify-cfn-templates/auth/cognito455f02be-cloudformation-template.yml",
 				"logicalId": "authcognito455f02be"
 			},
-			"lastPushTimeStamp": "2018-10-20T17:38:29.616Z",
+			"lastPushTimeStamp": "2018-10-20T18:15:47.275Z",
 			"output": {
 				"AppClientSecret": "18njnecnrm13e089ql5voimbf3j5r7tebgkajhqjor6lqi01kfhl",
 				"UserPoolId": "us-east-1_FBdn43gvU",
@@ -38,9 +38,9 @@
 			"providerPlugin": "awscloudformation",
 			"output": {
 				"securityType": "AMAZON_COGNITO_USER_POOLS",
-				"GraphQLAPIIdOutput": "fpwmxu7szrbdjf6lsavc422mwy",
-				"GraphQLAPIEndpointOutput": "https://a76u2qzzdzbnvmil3pbxic6ksy.appsync-api.us-east-1.amazonaws.com/graphql",
-				"GraphQLAPIKeyOutput": "da2-hfshcfme7fb33e3wyvo2fnkgcy",
+				"GraphQLAPIIdOutput": "xv76fxqx4vanda4j3ceyxfwlxy",
+				"GraphQLAPIEndpointOutput": "https://zby2i55fpnhbxjib7yr2pcssiy.appsync-api.us-east-1.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-w7i4wygruza45d3lqyybxswppa",
 				"AuthCognitoUserPoolIdOutput": "us-east-1_FBdn43gvU",
 				"AuthCognitoUserPoolNativeClientId": "See UserPool: us-east-1_FBdn43gvU",
 				"AuthCognitoUserPoolJSClientId": "See UserPool: us-east-1_FBdn43gvU"
@@ -49,8 +49,8 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/squadhealthcheck-20181020151205-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"logicalId": "apisquadhealthcheck"
 			},
-			"lastPushTimeStamp": "2018-10-20T17:38:33.638Z",
-			"lastPushDirHash": "LZEaePYa5C1biXjPjf3y4e2RW3g="
+			"lastPushTimeStamp": "2018-10-20T18:15:49.513Z",
+			"lastPushDirHash": "S70cnCeiYRnWIOs4stCCw4vjxRw="
 		}
 	}
 }

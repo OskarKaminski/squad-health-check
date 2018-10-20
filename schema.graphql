@@ -1,31 +1,28 @@
-type Team @model {
+type Group @model {
   id: ID!
-  users: [User] @connection(name: "TeamUsers")
-  retrospectives: [Retrospective] @connection(name: "TeamRetrospectives")
-  categories: [Category] @connection(name: "TeamCategories")
-  #    retroStartDay: String
-  #    retroStartHour: String
-  #    retroEndDay: String
-  #    retroEndHour: String
-  #    retroInterval: Number # In days
+  description: String!
+  users: [User] @connection(name: "GroupUsers")
+  retrospectives: [Retrospective] @connection(name: "GroupRetrospectives")
+  categories: [Category] @connection(name: "GroupCategories")
 }
 type User @model {
   id: ID!
   name: String!
-  team: Team! @connection(name: "TeamUsers")
+  group: Group @connection(name: "GroupUsers")
   answers: [Answer] @connection(name: "UserAnswers")
 }
 type Category @model {
-  id: String!
+  id: ID!
   order: Int
   descriptionGreen: String!
   descriptionRed: String!
-  team: Team @connection(name: "TeamCategories")
+  answers: Answer @connection(name: "CategoryAnswers")
+  group: Group @connection(name: "GroupCategories")
 }
 type Retrospective @model {
   id: ID!
   date: String!
-  team: Team @connection(name: "TeamRetrospectives")
+  group: Group @connection(name: "GroupRetrospectives")
   answers: [Answer] @connection(name: "RetrospectiveAnswers")
   finished: Boolean
 }
@@ -36,6 +33,6 @@ type Answer
     id: ID!
     user: User @connection(name: "UserAnswers")
     retrospective: Retrospective @connection(name: "RetrospectiveAnswers")
-    category: Category
+    category: Category @connection(name: "CategoryAnswers")
     value: Int
   }
