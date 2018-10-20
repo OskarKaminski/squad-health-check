@@ -127,6 +127,25 @@
 					"authSelections": "identityPoolAndUserPool"
 				}
 			}
+		},
+		"apisquadhealthcheck": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/squadhealthcheck-20181020151205-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"Parameters": {
+					"AppSyncApiName": "squadhealthcheck",
+					"AuthCognitoUserPoolId": {
+						"Fn::GetAtt": [
+							"authcognito455f02be",
+							"Outputs.UserPoolId"
+						]
+					},
+					"schemaGraphql": "s3://squadhealthcheck-20181020151205-deployment/amplify-appsync-files/schema.graphql.1540056455441",
+					"ResolverBucket": "squadhealthcheck-20181020151205-deployment",
+					"ResolverRootKey": "amplify-appsync-files",
+					"DeploymentTimestamp": "1540056455441"
+				}
+			}
 		}
 	},
 	"Outputs": {

@@ -1,0 +1,295 @@
+type User {
+  id: ID!
+  name: String!
+  whatevers: Whatever
+  answers(filter: ModelAnswerFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAnswerConnection
+}
+
+type Whatever {
+  id: ID!
+  name: String!
+  users: User
+}
+
+type Category {
+  id: ID!
+  order: Int
+  descriptionGreen: String!
+  descriptionRed: String!
+  answers: Answer
+}
+
+type Retrospective {
+  id: ID!
+  date: String!
+  answers(filter: ModelAnswerFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAnswerConnection
+  finished: Boolean
+}
+
+type Answer {
+  id: ID!
+  user: User
+  retrospective: Retrospective
+  category: Category
+  value: Int
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelUserConnection {
+  items: [User]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelUserFilterInput {
+  id: ModelIDFilterInput
+  name: ModelStringFilterInput
+  and: [ModelUserFilterInput]
+  or: [ModelUserFilterInput]
+  not: ModelUserFilterInput
+}
+
+type Query {
+  getUser(id: ID!): User
+  listUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String): ModelUserConnection
+  getWhatever(id: ID!): Whatever
+  listWhatevers(filter: ModelWhateverFilterInput, limit: Int, nextToken: String): ModelWhateverConnection
+  getCategory(id: ID!): Category
+  listCategorys(filter: ModelCategoryFilterInput, limit: Int, nextToken: String): ModelCategoryConnection
+  getRetrospective(id: ID!): Retrospective
+  listRetrospectives(filter: ModelRetrospectiveFilterInput, limit: Int, nextToken: String): ModelRetrospectiveConnection
+  getAnswer(id: ID!): Answer
+  listAnswers(filter: ModelAnswerFilterInput, limit: Int, nextToken: String): ModelAnswerConnection
+}
+
+input CreateUserInput {
+  name: String!
+  userWhateversId: ID
+}
+
+input UpdateUserInput {
+  id: ID!
+  name: String
+  userWhateversId: ID
+}
+
+input DeleteUserInput {
+  id: ID
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User
+  updateUser(input: UpdateUserInput!): User
+  deleteUser(input: DeleteUserInput!): User
+  createWhatever(input: CreateWhateverInput!): Whatever
+  updateWhatever(input: UpdateWhateverInput!): Whatever
+  deleteWhatever(input: DeleteWhateverInput!): Whatever
+  createCategory(input: CreateCategoryInput!): Category
+  updateCategory(input: UpdateCategoryInput!): Category
+  deleteCategory(input: DeleteCategoryInput!): Category
+  createRetrospective(input: CreateRetrospectiveInput!): Retrospective
+  updateRetrospective(input: UpdateRetrospectiveInput!): Retrospective
+  deleteRetrospective(input: DeleteRetrospectiveInput!): Retrospective
+  createAnswer(input: CreateAnswerInput!): Answer
+  updateAnswer(input: UpdateAnswerInput!): Answer
+  deleteAnswer(input: DeleteAnswerInput!): Answer
+}
+
+type Subscription {
+  onCreateUser: User @aws_subscribe(mutations: ["createUser"])
+  onUpdateUser: User @aws_subscribe(mutations: ["updateUser"])
+  onDeleteUser: User @aws_subscribe(mutations: ["deleteUser"])
+  onCreateWhatever: Whatever @aws_subscribe(mutations: ["createWhatever"])
+  onUpdateWhatever: Whatever @aws_subscribe(mutations: ["updateWhatever"])
+  onDeleteWhatever: Whatever @aws_subscribe(mutations: ["deleteWhatever"])
+  onCreateCategory: Category @aws_subscribe(mutations: ["createCategory"])
+  onUpdateCategory: Category @aws_subscribe(mutations: ["updateCategory"])
+  onDeleteCategory: Category @aws_subscribe(mutations: ["deleteCategory"])
+  onCreateRetrospective: Retrospective @aws_subscribe(mutations: ["createRetrospective"])
+  onUpdateRetrospective: Retrospective @aws_subscribe(mutations: ["updateRetrospective"])
+  onDeleteRetrospective: Retrospective @aws_subscribe(mutations: ["deleteRetrospective"])
+  onCreateAnswer: Answer @aws_subscribe(mutations: ["createAnswer"])
+  onUpdateAnswer: Answer @aws_subscribe(mutations: ["updateAnswer"])
+  onDeleteAnswer: Answer @aws_subscribe(mutations: ["deleteAnswer"])
+}
+
+type ModelWhateverConnection {
+  items: [Whatever]
+  nextToken: String
+}
+
+input ModelWhateverFilterInput {
+  id: ModelIDFilterInput
+  name: ModelStringFilterInput
+  and: [ModelWhateverFilterInput]
+  or: [ModelWhateverFilterInput]
+  not: ModelWhateverFilterInput
+}
+
+input CreateWhateverInput {
+  name: String!
+  whateverUsersId: ID
+}
+
+input UpdateWhateverInput {
+  id: ID!
+  name: String
+  whateverUsersId: ID
+}
+
+input DeleteWhateverInput {
+  id: ID
+}
+
+type ModelCategoryConnection {
+  items: [Category]
+  nextToken: String
+}
+
+input ModelCategoryFilterInput {
+  id: ModelIDFilterInput
+  order: ModelIntFilterInput
+  descriptionGreen: ModelStringFilterInput
+  descriptionRed: ModelStringFilterInput
+  and: [ModelCategoryFilterInput]
+  or: [ModelCategoryFilterInput]
+  not: ModelCategoryFilterInput
+}
+
+input CreateCategoryInput {
+  order: Int
+  descriptionGreen: String!
+  descriptionRed: String!
+  categoryAnswersId: ID
+}
+
+input UpdateCategoryInput {
+  id: ID!
+  order: Int
+  descriptionGreen: String
+  descriptionRed: String
+  categoryAnswersId: ID
+}
+
+input DeleteCategoryInput {
+  id: ID
+}
+
+type ModelRetrospectiveConnection {
+  items: [Retrospective]
+  nextToken: String
+}
+
+input ModelRetrospectiveFilterInput {
+  id: ModelIDFilterInput
+  date: ModelStringFilterInput
+  finished: ModelBooleanFilterInput
+  and: [ModelRetrospectiveFilterInput]
+  or: [ModelRetrospectiveFilterInput]
+  not: ModelRetrospectiveFilterInput
+}
+
+input CreateRetrospectiveInput {
+  date: String!
+  finished: Boolean
+}
+
+input UpdateRetrospectiveInput {
+  id: ID!
+  date: String
+  finished: Boolean
+}
+
+input DeleteRetrospectiveInput {
+  id: ID
+}
+
+type ModelAnswerConnection {
+  items: [Answer]
+  nextToken: String
+}
+
+input ModelAnswerFilterInput {
+  id: ModelIDFilterInput
+  value: ModelIntFilterInput
+  and: [ModelAnswerFilterInput]
+  or: [ModelAnswerFilterInput]
+  not: ModelAnswerFilterInput
+}
+
+input CreateAnswerInput {
+  value: Int
+  answerUserId: ID
+  answerRetrospectiveId: ID
+  answerCategoryId: ID
+}
+
+input UpdateAnswerInput {
+  id: ID!
+  value: Int
+  answerUserId: ID
+  answerRetrospectiveId: ID
+  answerCategoryId: ID
+}
+
+input DeleteAnswerInput {
+  id: ID
+}
