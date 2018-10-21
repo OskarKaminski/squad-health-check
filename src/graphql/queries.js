@@ -41,6 +41,7 @@ export const listGroups = `query ListGroups(
     items {
       id
       description
+      image
       users {
         items {
           id

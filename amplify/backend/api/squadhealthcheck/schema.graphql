@@ -1,6 +1,7 @@
 type Group @model {
   id: ID!
   description: String!
+  image: String
   users: [User] @connection(name: "GroupUsers")
   retrospectives: [Retrospective] @connection(name: "GroupRetrospectives")
   categories: [Category] @connection(name: "GroupCategories")

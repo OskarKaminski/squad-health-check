@@ -12,4 +12,4 @@ class App extends React.Component {
     }
 }
 
-export default withAuthenticator(App, {includeGreetings: true})
+export default withAuthenticator(App)

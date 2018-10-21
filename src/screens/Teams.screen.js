@@ -1,7 +1,10 @@
 import React from 'react'
 import {View, Image, TouchableOpacity} from 'react-native'
-import {Button, Text} from 'native-base'
+import {Button, Text, Card, CardItem, Icon, Right, Content} from 'native-base'
 import styled from 'styled-components/native'
+import {Connect} from 'aws-amplify-react-native'
+import {graphqlOperation} from 'aws-amplify'
+import {listGroups} from '../graphql/queries';
 
 const H1 = styled.Text`
     fontSize: 30;
@@ -15,15 +18,60 @@ const Page = styled.View`
     justifyContent: space-between;
 `
 
+const TeamIcon = styled.Image`
+    width: 50; 
+    height: 50;
+    marginRight: 20;
+`
+
+
 export default class Teams extends React.Component {
+    static navigationOptions = {
+        title: 'Teams',
+    }
+
     render () {
         return (
-            <Page>
-                <H1>Teams</H1>
-                <Button full warning onPress={() => this.props.navigation.navigate('AddTeam')}>
-                    <Text>Add new team</Text>
-                </Button>
-            </Page>
+            <Connect
+                query={graphqlOperation(listGroups)}
+            >
+                {({data, loading, errors}) => {
+                    if (loading) {
+                        return <Text>Loading...</Text>;
+                    }
+                    if (!data.listGroups) return;
+
+                    console.log({'data.listGroups.items': data.listGroups.items});
+                    return (
+                        <Page>
+                            <Content>
+                                {
+                                    data.listGroups.items.map(group => (
+                                        <Card key={group.id}>
+                                            <TouchableOpacity
+                                                onPress={() => this.props.navigation.navigate('Team', {id: group.id})}>
+                                                <CardItem style={{flex: 1}}>
+                                                    <TeamIcon
+                                                        source={{uri: group.image}}/>
+                                                    <Text style={{flex: 1}}>{group.description}</Text>
+                                                    <Right>
+                                                        <Icon name="arrow-forward"/>
+                                                    </Right>
+                                                </CardItem>
+
+                                            </TouchableOpacity>
+                                        </Card>
+                                    ))
+                                }
+                            </Content>
+                            <Button full warning onPress={() => this.props.navigation.navigate('AddTeam')}>
+                                <Text>Create new team</Text>
+                            </Button>
+                        </Page>
+                    )
+
+                }}
+            </Connect>
         )
     }
 }
