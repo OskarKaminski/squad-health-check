@@ -131,7 +131,7 @@ export const getCategory = `query GetCategory($id: ID!) {
   }
 }
 `;
-export const listCategorys = `query ListCategorys(
+export const listCategories = `query ListCategorys(
   $filter: ModelCategoryFilterInput
   $limit: Int
   $nextToken: String
@@ -140,6 +140,8 @@ export const listCategorys = `query ListCategorys(
     items {
       id
       order
+      name
+      image
       descriptionGreen
       descriptionRed
       answers {

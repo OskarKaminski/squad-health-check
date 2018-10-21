@@ -6,12 +6,6 @@ import {Connect} from 'aws-amplify-react-native'
 import {graphqlOperation} from 'aws-amplify'
 import {listGroups} from '../graphql/queries';
 
-const H1 = styled.Text`
-    fontSize: 30;
-    color: black;
-    textAlign: center;
-`
-
 const Page = styled.View`
     flex: 1;
     backgroundColor: white;
@@ -40,8 +34,6 @@ export default class Teams extends React.Component {
                         return <Text>Loading...</Text>;
                     }
                     if (!data.listGroups) return;
-
-                    console.log({'data.listGroups.items': data.listGroups.items});
                     return (
                         <Page>
                             <Content>
@@ -49,7 +41,7 @@ export default class Teams extends React.Component {
                                     data.listGroups.items.map(group => (
                                         <Card key={group.id}>
                                             <TouchableOpacity
-                                                onPress={() => this.props.navigation.navigate('Team', {id: group.id})}>
+                                                onPress={() => this.props.navigation.navigate('Team', {id: group.id, title: group.description})}>
                                                 <CardItem style={{flex: 1}}>
                                                     <TeamIcon
                                                         source={{uri: group.image}}/>
