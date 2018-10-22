@@ -1,6 +1,6 @@
 import React from 'react'
-import {View, Image, TouchableOpacity} from 'react-native'
-import {Button, Text, Card, CardItem, Icon, Right, Content, Left, Thumbnail, Body} from 'native-base'
+import {View, Image, TouchableOpacity, Text} from 'react-native'
+import {Button, Card, CardItem, Icon, Right, Content, Left, Thumbnail, Body} from 'native-base'
 import styled from 'styled-components/native'
 import {Connect} from 'aws-amplify-react-native'
 import {graphqlOperation} from 'aws-amplify'
@@ -43,7 +43,7 @@ export default class Categories extends React.Component {
                                                     category.image &&
                                                     <Thumbnail source={{uri: category.image}}/>
                                                 }
-                                                <Text style={{flex: 1, textAlign: 'center'}}>{category.name}</Text>
+                                                <Text style={{flex: 1, textAlign: 'center', fontSize: 20}}>{category.name}</Text>
                                             </CardItem>
                                             <CardItem style={{alignItems: 'flex-start', justifyContent: 'flex-start', flex: 1}}>
                                                 <View style={{flexDirection: 'column', alignItems: 'center', marginLeft: 5, marginRight: 5, flex: 1}}>
