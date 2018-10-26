@@ -41,7 +41,9 @@ export default class Categories extends React.Component {
                                             <CardItem style={{flexDirection: 'column', alignItems: 'center'}}>
                                                 {
                                                     category.image &&
-                                                    <Thumbnail source={{uri: category.image}}/>
+                                                    <CategoryIcon
+                                                        resizeMode='contain'
+                                                        source={{uri: category.image}}/>
                                                 }
                                                 <Text style={{flex: 1, textAlign: 'center', fontSize: 20}}>{category.name}</Text>
                                             </CardItem>
