@@ -8,7 +8,10 @@ const awsmobile =  {
     "aws_user_pools_web_client_id": "2fvir6ct7eb97eeopbs3on9r71",
     "aws_appsync_graphqlEndpoint": "https://zby2i55fpnhbxjib7yr2pcssiy.appsync-api.us-east-1.amazonaws.com/graphql",
     "aws_appsync_region": "us-east-1",
-    "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS"
+    "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS",
+    "Storage": {
+        "bucket": "squad-health-check"
+    }
 };
 
 

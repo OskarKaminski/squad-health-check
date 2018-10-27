@@ -74,5 +74,9 @@
 		<string>Roboto.ttf</string>
 		<string>rubicon-icon-font.ttf</string>
 	</array>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>Ability to add your custom icons</string>
+  <key>NSPhotoLibraryAddUsageDescription</key>
+  <string>Ability to add your custom icons</string>
 </dict>
 </plist>
