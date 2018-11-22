@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, Image, TouchableOpacity, Text} from 'react-native'
-import {Button, Card, CardItem, Icon, Right, Content, Left, Thumbnail, Body} from 'native-base'
+import {Card, CardItem, Icon, Content} from 'native-base'
 import styled from 'styled-components/native'
 import {Connect} from 'aws-amplify-react-native'
 import {graphqlOperation} from 'aws-amplify'
@@ -8,20 +8,49 @@ import {listCategories} from '../graphql/queries';
 
 const Page = styled.View`
     flex: 1;
-    backgroundColor: white;
+    backgroundColor: #FAFBFC;
     justifyContent: space-between;
 `
 
-const CategoryIcon = styled.Image`
-    width: 50; 
-    height: 50;
+const Header = styled.View`
+    backgroundColor: #0CAADC;
+    height: 150px;
+    flex-direction: row;
+    justifyContent: space-between;
+    align-items: center;
+    padding: 0 30px;
 `
 
-export default class Categories extends React.Component {
-    static navigationOptions = {
-        title: 'Categories',
-    }
+const HeaderText = styled.Text`
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+`
 
+const CategoryIcon = styled.Image`
+    width: 80; 
+    height: 80;
+`
+const CategoriesList = styled.View`
+  margin-top: -30px;
+`
+
+const squadCardStyles = {
+    marginRight: 20,
+    marginLeft: 20,
+    borderRadius: 10,
+    height: 120,
+    justifyContent: 'center',
+    marginBottom: 15
+}
+
+const cardItemStyles = {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 10
+}
+
+export default class Categories extends React.Component {
     render () {
         return (
             <Connect
@@ -35,31 +64,35 @@ export default class Categories extends React.Component {
                     return (
                         <Page>
                             <Content>
-                                {
-                                    data.listCategorys.items.map(category => (
-                                        <Card key={category.id}>
-                                            <CardItem style={{flexDirection: 'column', alignItems: 'center'}}>
-                                                {
-                                                    category.image &&
-                                                    <CategoryIcon
-                                                        resizeMode='contain'
-                                                        source={{uri: category.image}}/>
-                                                }
-                                                <Text style={{flex: 1, textAlign: 'center', fontSize: 20}}>{category.name}</Text>
-                                            </CardItem>
-                                            <CardItem style={{alignItems: 'flex-start', justifyContent: 'flex-start', flex: 1}}>
-                                                <View style={{flexDirection: 'column', alignItems: 'center', marginLeft: 5, marginRight: 5, flex: 1}}>
-                                                    <Text style={{marginBottom: 10, fontWeight: 'bold', color: '#559955'}}>Green</Text>
-                                                    <Text>{category.descriptionGreen}</Text>
-                                                </View>
-                                                <View style={{flexDirection: 'column', alignItems: 'center', marginLeft: 5, marginRight: 5, flex: 1}}>
-                                                    <Text style={{marginBottom: 10, fontWeight: 'bold', color: '#cc5555'}}>Red</Text>
-                                                    <Text>{category.descriptionRed}</Text>
-                                                </View>
-                                            </CardItem>
-                                        </Card>
-                                    ))
-                                }
+                                <Header>
+                                    <HeaderText>
+                                        <Icon name='ios-arrow-back' type='Ionicons' style={{color: '#fff', fontSize: 30}} />
+                                    </HeaderText>
+                                    <HeaderText>Categories</HeaderText>
+                                    <Icon name='add' type='MaterialIcons' style={{color: '#fff', fontSize: 30}} />
+                                </Header>
+                                <CategoriesList>
+                                    {
+                                        data.listCategorys.items.map(category => (
+                                            <Card key={category.id} style={squadCardStyles}>
+                                                <CardItem style={cardItemStyles}>
+                                                    {
+                                                        category.image &&
+                                                        <CategoryIcon
+                                                            resizeMode='contain'
+                                                            source={{uri: category.image}}/>
+                                                    }
+                                                    <Text style={{
+                                                        flex: 1,
+                                                        textAlign: 'center',
+                                                        fontSize: 16
+                                                    }}>{category.name}</Text>
+                                                    <Icon name='ios-arrow-forward' type='Ionicons' style={{color: '#0CAADC', fontSize: 30}} />
+                                                </CardItem>
+                                            </Card>
+                                        ))
+                                    }
+                                </CategoriesList>
                             </Content>
                         </Page>
                     )

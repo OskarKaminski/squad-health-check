@@ -1,11 +1,10 @@
 import React from 'react'
 import {View, Image, TouchableOpacity} from 'react-native'
-import {Button, Text, Card, CardItem, Icon, Right, Content} from 'native-base'
+import {Button, Text, Card, CardItem, Icon, Content} from 'native-base'
 import styled from 'styled-components/native'
 import {Connect} from 'aws-amplify-react-native'
 import {graphqlOperation} from 'aws-amplify'
 import {listGroups} from '../graphql/queries';
-import ArrowRight from '../../assets/imgs/arrow-right-2x.png'
 
 const Page = styled.View`
     flex: 1;
@@ -88,8 +87,9 @@ export default class Teams extends React.Component {
                                                                 source={{uri: group.image}}/>
                                                         }
                                                         <Text style={{flex: 1}}>{group.description}</Text>
-                                                        <Image source={ArrowRight} style={{height: 20}}
-                                                               resizeMode='contain'/>
+                                                        <Icon name='ios-arrow-forward'
+                                                              type='Ionicons'
+                                                              style={{color: '#0CAADC', fontSize: 30}} />
                                                     </CardItem>
 
                                                 </TouchableOpacity>

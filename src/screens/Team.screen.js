@@ -12,6 +12,19 @@ const Page = styled.View`
     justifyContent: space-between;
 `
 
+const Header = styled.View`
+    backgroundColor: #0CAADC;
+    height: 150px;
+    justifyContent: center;
+    align-items: center;
+`
+
+const HeaderText = styled.Text`
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+`
+
 
 export default class Team extends React.Component {
     static navigationOptions = (props) => {
@@ -35,7 +48,10 @@ export default class Team extends React.Component {
                     return (
                         <Page>
                             <Content>
-                                <Text>{data.getGroup.description}</Text>
+                                <Header>
+                                    <HeaderText>{data.getGroup.description}</HeaderText>
+                                </Header>
+                                <Text>Hey</Text>
                             </Content>
                         </Page>
                     )
