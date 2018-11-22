@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import {Connect} from 'aws-amplify-react-native'
 import {graphqlOperation} from 'aws-amplify'
 import {listCategories} from '../graphql/queries';
+import DefaultIcon from '../../assets/default-icon-2x.png'
 
 const Page = styled.View`
     flex: 1;
@@ -66,28 +67,30 @@ export default class Categories extends React.Component {
                             <Content>
                                 <Header>
                                     <HeaderText>
-                                        <Icon name='ios-arrow-back' type='Ionicons' style={{color: '#fff', fontSize: 30}} />
+                                        <Icon name='ios-arrow-back' type='Ionicons'
+                                              style={{color: '#fff', fontSize: 30}}/>
                                     </HeaderText>
                                     <HeaderText>Categories</HeaderText>
-                                    <Icon name='add' type='MaterialIcons' style={{color: '#fff', fontSize: 30}} />
+                                    <Icon name='add' type='MaterialIcons' style={{color: '#fff', fontSize: 30}}/>
                                 </Header>
                                 <CategoriesList>
                                     {
                                         data.listCategorys.items.map(category => (
                                             <Card key={category.id} style={squadCardStyles}>
                                                 <CardItem style={cardItemStyles}>
-                                                    {
-                                                        category.image &&
-                                                        <CategoryIcon
-                                                            resizeMode='contain'
-                                                            source={{uri: category.image}}/>
-                                                    }
+                                                    <CategoryIcon
+                                                        resizeMode='contain'
+                                                        source={
+                                                            category.image && {uri: category.image} ||
+                                                            DefaultIcon
+                                                        }/>
                                                     <Text style={{
                                                         flex: 1,
                                                         textAlign: 'center',
                                                         fontSize: 16
                                                     }}>{category.name}</Text>
-                                                    <Icon name='ios-arrow-forward' type='Ionicons' style={{color: '#0CAADC', fontSize: 30}} />
+                                                    <Icon name='ios-arrow-forward' type='Ionicons'
+                                                          style={{color: '#0CAADC', fontSize: 30}}/>
                                                 </CardItem>
                                             </Card>
                                         ))
