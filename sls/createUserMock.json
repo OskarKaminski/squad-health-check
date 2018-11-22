@@ -1,0 +1,9 @@
+{
+  "userName": "test6",
+  "request": {
+    "userAttributes": {
+      "sub": "86b3e355-5f5f-420f-9dcc-d42603f7132a",
+      "email": "qwe@qwe.pl"
+    }
+  }
+}

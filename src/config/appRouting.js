@@ -7,10 +7,10 @@ import HealthCheck from '../screens/HealthCheck.screen'
 import Categories from '../screens/Categories.screen'
 
 export default StackNavigator({
-    AddTeam: {screen: AddTeam},
     Teams: {screen: Teams},
-    Team: {screen: Team},
     Categories: {screen: Categories},
+    Team: {screen: Team},
+    AddTeam: {screen: AddTeam},
     History: {screen: History},
     HealthCheck: {screen: HealthCheck},
-})
+}, { headerMode: 'none' })
